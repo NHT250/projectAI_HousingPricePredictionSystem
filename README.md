@@ -1,26 +1,4 @@
-# Vietnam Real Estate Price Prediction Platform
 
-A modern full-stack web application for searching, viewing, and predicting residential property prices in Vietnam. Built with React+Vite frontend, FastAPI backend, MongoDB database, and machine learning.
-
-## 👥 Team Members
-
-- **Ngo Khai Luan** - 2374802010295
-- **Bui Tien Dat** - 2374802010094
-- **Nguyen Hoang Tien** - 2374802010494
-- **Pham Le Duy Bao** - 2374802010043
-- **Le Tan Nguyen** - 2374802010354
-
-
-## Overview
-
-This integrated real estate platform offers:
-- **Property Catalog** - Browse 54,202+ residential properties across 235 Vietnamese districts
-- **Search & Filter** - Find properties by location, price range, bedrooms
-- **AI Price Prediction** - ML-powered property valuation using RandomForest (62.88% accuracy)
-- **Market Analysis** - Price patterns across all Vietnamese districts
-- **CSV Data Management** - Efficient property data handling  
-
-## Architecture
 
 ### Technology Stack
 
@@ -31,32 +9,7 @@ This integrated real estate platform offers:
 - **API Pattern**: REST with JSON (CORS-enabled)
 
 
-## Quick Start
 
-### Prerequisites
-- Node.js v18+ and npm
-- Python 3.10+ with venv
-- FastAPI & scikit-learn (installed via pip)
-
-### Setup Steps
-
-1. **Install dependencies**
-```bash
-npm install
-npm run api:install
-```
-
-2. **Start backend** (Terminal 1)
-```bash
-npm run api:dev
-# API available at http://localhost:8000
-# Swagger docs at http://localhost:8000/docs
-```
-
-3. **Start frontend** (Terminal 2)
-```bash
-npm run dev
-# Application available at http://localhost:3000
 ```
 
 ## Machine Learning Model
@@ -84,69 +37,6 @@ npm run dev
 - Removed prices < 500 tr VND (too cheap)
 - Removed prices > 196,000 tr VND (too expensive)
 - Removed properties with missing area/invalid data
-
-## API Endpoints
-
-| Endpoint | Method | Description |
-|----------|--------|-------------|
-| `/api/health` | GET | Service health check |
-| `/api/properties` | GET | List properties (with filters) |
-| `/api/properties/{id}` | GET | Property details |
-| `/api/predict` | POST | Predict property price |
-| `/api/inquiries` | POST | Submit inquiry |
-
-### Example: Predict Property Price
-
-**Request**:
-```bash
-curl -X POST http://localhost:8000/api/predict \
-  -H "Content-Type: application/json" \
-  -d '{
-    "area": 100,
-    "location": "District 7, HCMC",
-    "bedrooms": 3,
-    "bathrooms": 2,
-    "frontage": 1,
-    "accessRoad": 10,
-    "floors": 2,
-    "legalStatus": "Red book",
-    "furnitureState": "Fully furnished"
-  }'
-```
-
-**Response** (example for Quận 1):
-```json
-{
-  "estimatedValue": 48194,
-  "confidence": 0.6288,
-  "analysis": "Model estimates this property around 48,194,000,000 VND (48 tỷ VND) for Quận 1, HCMC. Model accuracy: 62.88%. Error range: ±4,826 tr VND."
-}
-```
-
-## Project Structure
-
-```
-.
-├── src/                     # React frontend
-│   ├── pages/              # Page components
-│   ├── components/         # Reusable UI components
-│   └── services/           # API & business logic
-├── backend/                # FastAPI backend
-│   ├── app/
-│   │   ├── main.py        # API endpoints
-│   │   ├── schemas.py     # Data models
-│   │   ├── database.py    # MongoDB helpers
-│   │   └── config.py      # Configuration
-│   ├── scripts/           # Training & import scripts
-│   ├── artifacts/         # Trained ML model
-│   └── data/              # Datasets
-├── package.json
-├── tsconfig.json
-├── vite.config.ts
-├── README.md
-├── CALCULATION_METHOD.md    # Detailed price calculation formula
-└── sample_predictions_30_districts.csv  # Sample data (30 predictions)
-```
 
 ## Price Calculation Method
 
